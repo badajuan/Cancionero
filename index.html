@@ -13,6 +13,7 @@
   <nav>
     <label for="song-select">Select a Song:</label>
     <select id="song-select">
+      <option value="">None</option>
       <option value="#song1">Song 1</option>
       <option value="#song2">Song 2</option>
       <option value="#song3">Song 3</option>
@@ -43,8 +44,15 @@
   </main>
 
   <script>
-    // Add event listener to song links
-   // Add event listener to song select
+    // Hide all song sections initially
+    window.addEventListener("DOMContentLoaded", function() {
+      var songSections = document.querySelectorAll(".song-section");
+      songSections.forEach(function(section) {
+        section.style.display = "none";
+      });
+    });
+
+    // Add event listener to song select
     var songSelect = document.getElementById("song-select");
     songSelect.addEventListener("change", function() {
       var targetId = this.value;
@@ -59,6 +67,8 @@
         }
       });
     });
+
+
   </script>
 </body>
 </html>
