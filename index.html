@@ -3,6 +3,7 @@
 <head>
   <title>Cancionero Maria Auxiliadora</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="script.js"></script>
 </head>
 <body>
   <header>
@@ -10,32 +11,54 @@
   </header>
 
   <nav>
-    <ul id="song-index">
-      <li><a href="#song1">Song 1</a></li>
-      <li><a href="#song2">Song 2</a></li>
-      <li><a href="#song3">Song 3</a></li>
+    <label for="song-select">Select a Song:</label>
+    <select id="song-select">
+      <option value="#song1">Song 1</option>
+      <option value="#song2">Song 2</option>
+      <option value="#song3">Song 3</option>
       <!-- Add more songs as needed -->
-    </ul>
+    </select>
   </nav>
+  
 
   <main>
-    <section id="song1">
+    <section id="song1" class="song-section">
       <h2>Song 1</h2>
       <p>Lyrics for Song 1 go here.</p>
+      <a href="#song-index">Back to Song Index</a>
     </section>
 
-    <section id="song2">
+    <section id="song2" class="song-section">
       <h2>Song 2</h2>
       <p>Lyrics for Song 2 go here.</p>
+      <a href="#song-index">Back to Song Index</a>
     </section>
 
-    <section id="song3">
+    <section id="song3" class="song-section">
       <h2>Song 3</h2>
       <p>Lyrics for Song 3 go here.</p>
+      <a href="#song-index">Back to Song Index</a>
     </section>
     <!-- Add more sections for additional songs -->
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    // Add event listener to song links
+   // Add event listener to song select
+    var songSelect = document.getElementById("song-select");
+    songSelect.addEventListener("change", function() {
+      var targetId = this.value;
+      var targetSection = document.querySelector(targetId);
+      var songSections = document.querySelectorAll(".song-section");
+
+      songSections.forEach(function(section) {
+        if (section === targetSection) {
+          section.style.display = "block";
+        } else {
+          section.style.display = "none";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
